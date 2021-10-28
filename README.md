@@ -1,4 +1,10 @@
 # air-quality-and-asthma
+
+### Problem description
+
+Problem is described in README with enough context, so it's clear what the problem is and how the solution will be used
+
+
 ML project - model of air quality data with prediction of asthma prevalence based on data for all counties of USA
 
 Two datasets are merged in this project "Air Quality" and "Asthma prevalence"
@@ -15,7 +21,20 @@ Why not 2017 and 2017?
 Because 2016 - 2017 gives better RMSE. I
 t means If you move to the place with bad air quality, you will get your asthma only next year :)
 
+### Dependency and enviroment management
+README says how to install the dependencies and how to activate the env
 
+
+### Containerization
+Dockerfile is provided and README describes how to build a contained and how to run it
+
+### Cloud deployment
+Docs describe clearly (with code) how to deploy the service to the cloud
+There's code for deployment and a public endpoint that could be tested
+
+
+###
+Extensive EDA (ranges of values, missing values, analysis of target variable, feature importance analysis)
 
 * Thinking of a problem that's interesting for you and finding a dataset for that
 * Describing this problem and explaining how a model could be used
