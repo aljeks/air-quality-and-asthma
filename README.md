@@ -63,7 +63,10 @@ To run just builded container run:
 ### Cloud deployment
 
 At first you have to get your AWS cloud machine.
-Read more about this here https://mlbookcamp.com/article/aws and here https://mlbookcamp.com/article/aws-ec2
+
+Read more about this here https://mlbookcamp.com/article/aws 
+and here https://mlbookcamp.com/article/aws-ec2
+
 Don't forget to setup security settings in AWS console and open TCP 9696 port
 
 Using address of your server navigate there
@@ -75,19 +78,24 @@ If you on your AWS ec2 server just clone your project from git
 #git clone https://github.com/aljeks/air-quality-and-asthma.git
 
 Then build docker container with all files provided:
+
 #sudo docker build -t predict .
 
 And finally run docker instance
+
 #sudo docker run -d --rm -p 9696:9696 predict
 
 (Optional) If you want to get inside container for some reason run it like
+
 #sudo docker run -it --rm --entrypoint=bash predict
 
-After this you can send a POST request to the cloud via jupyter notebook 'air-quality-and-asthma/notebook.ipynb'
+After this you can send a POST request to the cloud via jupyter notebook 
+'air-quality-and-asthma/notebook.ipynb'
 
 It's in the bottom of the file with the label: 'Test example with request to AWS cloud service'
 
 Or just run this curl from any terminal:
+
 #
 curl --location --request POST 'http://ec2-18-222-227-70.us-east-2.compute.amazonaws.com:9696/predict' \
 --header 'Content-Type: application/json' \
