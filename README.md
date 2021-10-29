@@ -45,14 +45,23 @@ It means If you move to the place with bad air quality, you will get your asthma
 ### Dependency and enviroment management and run
 To install the dependencies and activate the env execute on linux:
 
-pipenv install scikit-learn==1.0 numpy flask gunicorn
-pipenv run gunicorn --bind 0.0.0.0:9696 predict:app
+#pipenv install scikit-learn==1.0 numpy flask gunicorn
+#pipenv run gunicorn --bind 0.0.0.0:9696 predict:app
 
-jupyter-notebook
-http://localhost:8888/
+
+Also you can run pre-installed jupyter-notebook for better UI
+#jupyter-notebook
+
+
+Don't forget to clone project from git
+
+#git clone https://github.com/aljeks/air-quality-and-asthma.git
+
+Then just open address http://localhost:8888/ in your browser (jupyter-notebook or Anaconda should be up)
+And enjoy /air-quality-and-asthma/notebook.ipynb
 
 ### Containerization and run
-Dockerfile is provided and README describes how to build a contained and how to run it
+Dockerfile is provided with git project
 
 To build docker container run:
 #sudo docker build -t predict .
@@ -61,40 +70,58 @@ To run just builded container run:
 #sudo docker run -it --rm -p 9696:9696 predict
 
 
-
 ### Cloud deployment
-Docs describe clearly (with code) how to deploy the service to the cloud
-There's code for deployment and a public endpoint that could be tested
+
+At first you have to get your AWS cloud machine.
+Read more about this here https://mlbookcamp.com/article/aws and here https://mlbookcamp.com/article/aws-ec2
+Don't forget to setup security settings in AWS console and open TCP 9696 port
+
+Using address of your server navigate there
+
+#ssh -i "jupiter.pem" ubuntu@ec2-18-222-227-70.us-east-2.compute.amazonaws.com
+
+If you on your AWS ec2 server just clone your project from git
 
 #git clone https://github.com/aljeks/air-quality-and-asthma.git
+
+Then build docker container with all files provided:
 #sudo docker build -t predict .
-#sudo docker run -it --rm -p 9696:9696 predict
 
-air-quality-and-asthma/notebook.ipynb
-Test example with request to AWS cloud service
+And finally run docker instance
+#sudo docker run -d --rm -p 9696:9696 predict
+
+(Optional) If you want to get inside container for some reason run it like
+#sudo docker run -it --rm --entrypoint=bash predict
+
+After tis you can sen a request to the cloud via jupiter notebook 'air-quality-and-asthma/notebook.ipynb'
+It's in the bottom of file with label: 'Test example with request to AWS cloud service'
+
+Or just run this curl from any terminal:
+#
+curl --location --request POST 'http://ec2-18-222-227-70.us-east-2.compute.amazonaws.com:9696/predict' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+   "state":"nevada",
+   "county":"clark",
+   "days_with_aqi":366,
+   "good_days":125,
+   "moderate_days":215,
+   "unhealthy_for_sensitive_groups_days":25,
+   "unhealthy_days":0,
+   "very_unhealthy_days":1,
+   "hazardous_days":0,
+   "median_aqi":58,
+   "days_co":0,
+   "days_no2":27,
+   "days_ozone":1,
+   "days_so2":0,
+   "days_pm2.5":114,
+   "days_pm10":6,
+   "latitude":36.569333,
+   "longitude":-115.676651,
+   "totalpopulation":223647
+}'
 
 
-
-### Deliverables
-
-For this project, you repository/folder should contain the following:
-
-* `README.md` with
-  * Description of the problem
-  * Describing this problem and explaining how a model could be used
-  * Instructions on how to run the project
-* Notebook (suggested name - `notebook.ipynb`) with
-  * Data preparation and data clearning
-  * EDA, feature importance analysis
-  * Model selection process and parameter tuning
-* Script `train.py` (suggested name)
-  * Training the final model
-  * Saving it to a file (e.g. pickle)
-* Script `predict.py` (suggested name)
-  * Loading the model
-  * Serving it via a web serice (e.g. with Flask)
-* `Pipenv` and `Pipenv.lock`
-  * or equivalents: conda environment file, requirements.txt or pyproject.toml
-* `Dockerfile` for running the service
 
 
