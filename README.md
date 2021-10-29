@@ -43,14 +43,36 @@ Because matching of 2016 and 2017 gives better RMSE. I
 It means If you move to the place with bad air quality, you will get your asthma only next year :)
 
 ### Dependency and enviroment management and run
-README says how to install the dependencies and how to activate the env
+To install the dependencies and activate the env execute on linux:
+
+pipenv install scikit-learn==1.0 numpy flask gunicorn
+pipenv run gunicorn --bind 0.0.0.0:9696 predict:app
+
+jupyter-notebook
+http://localhost:8888/
 
 ### Containerization and run
 Dockerfile is provided and README describes how to build a contained and how to run it
 
+To build docker container run:
+#sudo docker build -t predict .
+
+To run just builded container run:
+#sudo docker run -it --rm -p 9696:9696 predict
+
+
+
 ### Cloud deployment
 Docs describe clearly (with code) how to deploy the service to the cloud
 There's code for deployment and a public endpoint that could be tested
+
+#git clone https://github.com/aljeks/air-quality-and-asthma.git
+#sudo docker build -t predict .
+#sudo docker run -it --rm -p 9696:9696 predict
+
+air-quality-and-asthma/notebook.ipynb
+Test example with request to AWS cloud service
+
 
 
 ### Deliverables
