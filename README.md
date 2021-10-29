@@ -2,15 +2,15 @@
 
 ### Problem description
 
-This ML project is model of air quality data with prediction of asthma prevalence for some region.
-It's based on data for all counties of USA.
-My assamption is an air quality index for any city is correlated with quantity of people that have Asthma disease.
+This ML project is a model of air quality data with a prediction of asthma prevalence for some regions. 
+It's based on data for all counties of the USA. 
+My assumption is an air quality index for any city is correlated with the number of people that have Asthma disease.
 
-Solution of this problem can help people to choose correct place to live, espessially if they have Asthma.
-Any person can see what features of the city is the most important to avoid asthma.
+The solution to this problem can help people to choose the correct place to live, especially if they have Asthma. 
+Any person can see what features of the city are the most important to avoid asthma. 
 Avoiding 'bad' areas can help to improve your health.
 
-### What data I use
+### What data do I use
 
 Two datasets are merged in this project "Air Quality" and "Asthma prevalence"
 
@@ -18,29 +18,19 @@ The 1st dataset is "1980-2021 Yearly Air Quality Index from the US Environmental
 https://www.kaggle.com/threnjen/40-years-of-air-quality-index-from-the-epa-yearly
 
 This set includes yearly reports of air quality index (AQI) from various US Metro areas, as well as geographic data for the collection locations.
-Data includes this columns:
-'State', 'County', 'Year', 
-'Days with AQI', 'Good Days', 'Moderate Days', 
-'Unhealthy for Sensitive Groups Days', 'Unhealthy Days', 'Very Unhealthy Days', 'Hazardous Days',
-'Median AQI', 'Days CO', 'Days NO2', 'Days Ozone', 'Days SO2',
-'Days PM2.5', 'Days PM10', 
-'Latitude', 'Longitude'
+
+Data includes this columns: 'State', 'County', 'Year', 'Days with AQI', 'Good Days', 'Moderate Days', 'Unhealthy for Sensitive Groups Days', 'Unhealthy Days', 'Very Unhealthy Days', 'Hazardous Days', 'Median AQI', 'Days CO', 'Days NO2', 'Days Ozone', 'Days SO2', 'Days PM2.5', 'Days PM10', 'Latitude', 'Longitude'
 
 The 2nd dataset is "US County Data of Center for Disease Control and Prevention" 
 https://chronicdata.cdc.gov/500-Cities-Places/PLACES-County-Data-GIS-Friendly-Format-2020-releas/i46a-9kgh
 
-Data includes this columns:
-'StateDesc', 'CountyName', 'TotalPopulation', 'CASTHMA_AdjPrev'
+Data includes this columns: 'StateDesc', 'CountyName', 'TotalPopulation', 'CASTHMA_AdjPrev'
 
-'CASTHMA_AdjPrev' is a target value for prediction. 
-It's a prevalence of asthma in % for this area adjusted to age.
-Min value: 7.1%, mean value: 9.83%, max value: 15.4%
+'CASTHMA_AdjPrev' is a target value for prediction. It's a prevalence of asthma in % for this area adjusted to age. Min value: 7.1%, mean value: 9.83%, max value: 15.4%
 
-Note:
-I use data only for 2016 of the first dataset, because my second dataset has data only for - 2017 
-Why not 2017 and 2017? 
-Because matching of 2016 and 2017 gives better RMSE. I
-It means If you move to the place with bad air quality, you will get your asthma only next year :)
+Note: I use data only for 2016 of the first dataset because my second dataset has data only for - 2017 Why not 2017 and 2017? Because matching of 2016 and 2017 gives better RMSE. It means If you move to a place with bad air quality, you will get your asthma only next year :)
+
+
 
 ### Dependency and enviroment management and run
 To install the dependencies and activate the env execute on linux:
@@ -93,8 +83,9 @@ And finally run docker instance
 (Optional) If you want to get inside container for some reason run it like
 #sudo docker run -it --rm --entrypoint=bash predict
 
-After tis you can sen a request to the cloud via jupiter notebook 'air-quality-and-asthma/notebook.ipynb'
-It's in the bottom of file with label: 'Test example with request to AWS cloud service'
+After this you can send a POST request to the cloud via jupyter notebook 'air-quality-and-asthma/notebook.ipynb'
+
+It's in the bottom of the file with the label: 'Test example with request to AWS cloud service'
 
 Or just run this curl from any terminal:
 #
