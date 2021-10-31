@@ -19,14 +19,15 @@ https://www.kaggle.com/threnjen/40-years-of-air-quality-index-from-the-epa-yearl
 
 This set includes yearly reports of air quality index (AQI) from various US Metro areas, as well as geographic data for the collection locations.
 
-Data includes this columns: 'State', 'County', 'Year', 'Days with AQI', 'Good Days', 'Moderate Days', 'Unhealthy for Sensitive Groups Days', 'Unhealthy Days', 'Very Unhealthy Days', 'Hazardous Days', 'Median AQI', 'Days CO', 'Days NO2', 'Days Ozone', 'Days SO2', 'Days PM2.5', 'Days PM10', 'Latitude', 'Longitude'
+Data includes these columns: 'State', 'County', 'Year', 'Days with AQI', 'Good Days', 'Moderate Days', 'Unhealthy for Sensitive Groups Days', 'Unhealthy Days', 'Very Unhealthy Days', 'Hazardous Days', 'Median AQI', 'Days CO', 'Days NO2', 'Days Ozone', 'Days SO2', 'Days PM2.5', 'Days PM10', 'Latitude', 'Longitude'
 
 The 2nd dataset is "US County Data of Center for Disease Control and Prevention" 
 https://chronicdata.cdc.gov/500-Cities-Places/PLACES-County-Data-GIS-Friendly-Format-2020-releas/i46a-9kgh
 
-Data includes this columns: 'StateDesc', 'CountyName', 'TotalPopulation', 'CASTHMA_AdjPrev'
+Data includes these columns: 'StateDesc', 'CountyName', 'TotalPopulation', 'CASTHMA_AdjPrev'
 
-'CASTHMA_AdjPrev' is a target value for prediction. It's a prevalence of asthma in % for this area adjusted to age. Min value: 7.1%, mean value: 9.83%, max value: 15.4%
+'CASTHMA_AdjPrev' is a target value for prediction. It's a prevalence of asthma in % for this area adjusted to age. 
+Min value: 7.1%, mean value: 9.83%, max value: 15.4%
 
 Note: I use data only for 2016 of the first dataset because my second dataset has data only for - 2017 Why not 2017 and 2017? Because matching of 2016 and 2017 gives better RMSE. It means If you move to a place with bad air quality, you will get your asthma only next year :)
 
@@ -51,7 +52,7 @@ Then just open address http://localhost:8888/ in your browser (jupyter-notebook 
 And enjoy /air-quality-and-asthma/notebook.ipynb
 
 ### Containerization and run
-Dockerfile is provided with git project
+Dockerfile is provided with the git project
 
 To build docker container run:
 #sudo docker build -t predict .
