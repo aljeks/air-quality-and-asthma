@@ -37,10 +37,12 @@ Note: I use data only for 2016 of the first dataset because my second dataset ha
 To install the dependencies and activate the env execute on linux:
 
 #pipenv install scikit-learn==1.0 numpy flask gunicorn
+
 #pipenv run gunicorn --bind 0.0.0.0:9696 predict:app
 
 
 Also you can run pre-installed jupyter-notebook for better UI
+
 #jupyter-notebook
 
 
@@ -48,16 +50,20 @@ Don't forget to clone project from git
 
 #git clone https://github.com/aljeks/air-quality-and-asthma.git
 
+
 Then just open address http://localhost:8888/ in your browser (jupyter-notebook or Anaconda should be up)
+
 And enjoy /air-quality-and-asthma/notebook.ipynb
 
 ### Containerization and run
 Dockerfile is provided with the git project
 
 To build docker container run:
+
 #sudo docker build -t predict .
 
 To run just builded container run:
+
 #sudo docker run -it --rm -p 9696:9696 predict
 
 
@@ -74,23 +80,29 @@ Using address of your server navigate there
 
 #ssh -i "jupiter.pem" ubuntu@ec2-18-222-227-70.us-east-2.compute.amazonaws.com
 
+
 If you on your AWS ec2 server just clone your project from git
 
 #git clone https://github.com/aljeks/air-quality-and-asthma.git
+
 
 Then build docker container with all files provided:
 
 #sudo docker build -t predict .
 
+
 And finally run docker instance
 
 #sudo docker run -d --rm -p 9696:9696 predict
+
 
 (Optional) If you want to get inside container for some reason run it like
 
 #sudo docker run -it --rm --entrypoint=bash predict
 
+
 After this you can send a POST request to the cloud via jupyter notebook 
+
 'air-quality-and-asthma/notebook.ipynb'
 
 It's in the bottom of the file with the label: 'Test example with request to AWS cloud service'
